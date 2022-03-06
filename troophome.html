@@ -1,0 +1,257 @@
+<!--
+	Author: W3layouts
+	Author URL: http://w3layouts.com
+	License: Creative Commons Attribution 3.0 Unported
+	License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="zxx">
+<!-- Head -->
+
+<head>
+    <title>Key Login Form Flat Responsive Widget Template </title>
+    <!-- Meta-Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Key Login Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+    <script>
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+
+    </script>
+    <!-- //Meta-Tags -->
+    <!-- Index-Page-CSS -->
+    <!-- //Custom-Stylesheet-Links -->
+    <!--fonts -->
+    <!-- //fonts -->
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="all">
+    <!-- //Font-Awesome-File-Links -->
+
+    <!-- Google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Mukta:200,300,400,500,600,700,800" rel="stylesheet">
+    <!-- Google fonts -->
+
+    <link rel="stylesheet" href="css/troohome.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/custom.css" type="text/css" media="all">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
+
+    <script>
+        var x = sessionStorage.getItem("x");
+        var y = sessionStorage.getItem("y");
+
+        if (x == 0) {
+            window.location.href = "trooplog.html";
+        }
+
+        function newCadetForm() {
+            var int = document.forms["newCadet"]["intake"].value;
+            var first = document.forms["newCadet"]["first"].value;
+            var last = document.forms["newCadet"]["last"].value;
+
+            if (int == "") {
+                alert("Intake number must be filled out");
+                return false;
+            }
+            if (first == "") {
+                alert("First number must be filled out");
+                return false;
+            }
+            if (last == "") {
+                alert("Last must be filled out");
+                return false;
+            }
+
+            sessionStorage.setItem("x", first);
+            sessionStorage.setItem("y", last);
+            sessionStorage.setItem("int", int);
+
+        }
+
+        function newResultForm() {
+            var int = document.forms["newResult"]["intake"].value;
+            //var troop = document.forms["newResult"]["troop"].value;
+            var date = document.forms["newResult"]["date"].value;
+            var troop1 = document.forms["newResult"]["troop1"].value;
+
+            if (int == "") {
+                alert("Intake number must be filled out");
+                return false;
+            }
+            /*if (troop == "") {
+                alert("Troop must be filled out");
+                return false;
+            }*/
+            if (date == "") {
+                alert("Date must be filled out");
+                return false;
+            }
+            if (troop1 == "") {
+                alert("Troop must selected");
+                return false;
+            }
+
+            //sessionStorage.setItem("t", troop);
+            sessionStorage.setItem("t1", troop1);
+            sessionStorage.setItem("d", date);
+            sessionStorage.setItem("int", int);
+
+        }
+
+    </script>
+
+
+</head>
+<!-- //Head -->
+<!-- Body -->
+
+<body>
+
+    <section class="main">
+        <div class="layer">
+
+            <div class="bottom-grid">
+                <div class="logo">
+                    <h1> <a href="index.html"><span class=""><img src="images/logo.png" style="width: 200px ;height: auto" class="logo"></span></a></h1>
+                </div>
+                <div class="links">
+                    <ul class="links-unordered-list">
+                        <li class="active">
+                            <a href="trooplog.html" class="active">Logout</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <!------ Include the above in your HEAD tag ---------->
+
+
+            <div class="container login-container">
+                <div class="row">
+                    <div class="col-md-5 login-form-1">
+                        <h3>Insert New Cadets</h3>
+                        <form name="newCadet" action="cadetIn.html" onsubmit="newCadetForm()" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Intake" name="intake" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="First ID" name="first" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Last ID" name="last" />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btnSubmit" value="Insert Cadets" />
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="col-md-5 login-form-2">
+                        <h3>Insert Test Results</h3>
+                        <form name="newResult" action="table.html" onsubmit="newResultForm()" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Intake" name="intake" />
+                            </div>
+                            <!--<div class="form-group">
+                                <input type="text" class="form-control" placeholder="Troop" name="troop" />
+                            </div>-->
+                            <div class="form-group">
+                                <select name="troop1" class="form-control">
+                                    <option value="alpha">Alpha</option>
+                                    <option value="bravo">Bravo</option>
+                                    <option value="charlie">Charlie</option>
+                                    <option value="delta">Delta</option>
+                                    <option value="echo">Echo</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="date" class="form-control" placeholder="Date" name="date" />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btnSubmit" value="Insert Results" />
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <div class="col-md-2 login-form-1">
+                        <h3>Reports</h3>
+                        <div class="bon">
+                            <div id="btn"></div>
+                        </div>
+                        <script>
+                            firebase.initializeApp({
+                                apiKey: "AIzaSyDwbvS5gMt-dAGIJJs_iuvxjfgSIsWsZW0",
+                                authDomain: "mvf2-e0e2e.firebaseapp.com",
+                                databaseURL: "https://mvf2-e0e2e.firebaseio.com",
+                                projectId: "mvf2-e0e2e",
+                                storageBucket: "mvf2-e0e2e.appspot.com",
+                                messagingSenderId: "845407842102",
+                                appId: "1:845407842102:web:c55bfab8f766b90c69cd97"
+                            });
+
+                            var db = firebase.firestore();
+
+                            var docRef = db.collection("temp").where("msg","!=","");
+
+                            var i = 0;
+                            var x = "";
+
+                            docRef.get().then(function(querySnapshot) {
+                                    querySnapshot.forEach(function(doc) {
+                                        console.log(doc.id, " => ", doc.data());
+
+                                        editId = doc.id.toString();
+                                        tempInt = doc.data().intake.toString();
+                                        tempTroop = doc.data().troop.toString();
+                                        tempMonth = doc.data().month.toString();
+                                        console.log(editId);
+                                        console.log(tempInt);
+                                        console.log(tempTroop);
+                                        console.log(tempMonth);
+
+                                        x = x + "<button class=" + "rep" + " onClick = " + "edit(\"" + doc.id.toString() + "\",\"" + tempInt + "\",\"" + tempTroop + "\",\"" + tempMonth + "\")" + ">" + doc.id.toString() + "</button>";
+                                        document.getElementById("btn").innerHTML = x;
+                                        console.log(x);
+                                    });
+                                })
+                                .catch(function(error) {
+                                    console.log("Error getting documents: ", error);
+                                });
+
+                        </script>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function edit(chosen, int, troop, month) {
+            sessionStorage.setItem("chosen", chosen);
+            sessionStorage.setItem("tempint", int);
+            sessionStorage.setItem("tempt1", troop);
+            sessionStorage.setItem("tempmonth", month);
+            window.location.href = "errorTable.html"
+        }
+
+    </script>
+
+</body>
+<!-- //Body -->
+
+</html>

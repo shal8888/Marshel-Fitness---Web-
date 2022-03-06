@@ -1,0 +1,329 @@
+<html>
+
+<head>
+    <title></title>
+
+
+    <link rel="stylesheet" href="css/stylenew.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/profile.css" type="text/css" media="all">
+    <!-- //Custom-Stylesheet-Links -->
+    <!--fonts -->
+    <!-- //fonts -->
+    <!--<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="all">-->
+    <!-- //Font-Awesome-File-Links -->
+
+    <!-- Google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Mukta:200,300,400,500,600,700,800" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+
+    <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+
+
+
+
+    <title>CodePen - Sample User Settings Form</title>
+
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-storage.js"></script>
+    
+    
+
+    <script>
+        window.console = window.console || function(t) {};
+
+    </script>
+
+
+
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+
+    </script>
+
+    <script>
+        firebase.initializeApp({
+            apiKey: "AIzaSyDwbvS5gMt-dAGIJJs_iuvxjfgSIsWsZW0",
+            authDomain: "mvf2-e0e2e.firebaseapp.com",
+            databaseURL: "https://mvf2-e0e2e.firebaseio.com",
+            projectId: "mvf2-e0e2e",
+            storageBucket: "mvf2-e0e2e.appspot.com",
+            messagingSenderId: "845407842102",
+            appId: "1:845407842102:web:c55bfab8f766b90c69cd97"
+        });
+
+        var db = firebase.firestore();
+        var cid ;
+
+    </script>
+
+    <script>
+        function insertProf() {
+            var serviceNo = document.forms["editProf"]["serviceNo"].value;
+            var name = document.forms["editProf"]["name"].value;
+            var troop = document.forms["editProf"]["troop"].value;
+            var pass = document.forms["editProf"]["conpass"].value;
+            var cpass = document.forms["editProf"]["Cpw"].value;
+            var cImg = "";
+            var nImg = "";
+            var files = [];
+
+
+
+            var docRef = db.collection("cadet").where("serviceNum", "==", serviceNo.toString());
+
+            docRef.get().then(function(querySnapshot) {
+                    querySnapshot.forEach(function(doc) {
+                        console.log(doc.id, " => ", doc.data());
+
+                        var realPass = doc.data().password;
+
+                        console.log(realPass);
+
+                        if (realPass == cpass) {
+
+                            cid = serviceNo;
+
+                            db.collection('cadet').doc(serviceNo.toString()).update({
+                                name: name.toString(),
+                                troop: troop.toString(),
+                                password: pass.toString()
+                            });
+
+
+                            uploadImage();
+
+                        } else {
+                            console.log("pass word match wenne na");
+                        }
+
+
+                    });
+                })
+                .catch(function(error) {
+                    console.log("Error getting documents: ", error);
+                });
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+
+
+    <section class="main">
+        <div class="layer">
+
+            <div class="bottom-grid">
+                <div class="logo">
+                    <h1> <a href="index.html"><span class=""><img src="images/logo.png" style="width: 200px ;height: auto" class="logo"></span></a></h1>
+                </div>
+                <div class="links">
+                    <ul class="links-unordered-list">
+                        <li class="">
+                            <a href="homenew.html" class="active">Home</a>
+                        </li>
+                        <li class="">
+                            <a href="testresults.html" class="">Test Results</a>
+                        </li>
+                        <li class="">
+                            <a href="yourweak.html" class="">Your Weakness</a>
+                        </li>
+                        <li class="active">
+                            <a href="profile.html" class="">Profile</a>
+                        </li>
+                        <li class="">
+                            <a href="index.html" class="">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="in_form">
+            <h1>Cadet Profile</h1>
+            <div class="settings-message" id="js-message"></div>
+            <form name="editProf" onsubmit="insertProf()" method="post">
+                <input id="js-file-uploader" class="hidden" name="profile-picture" type="file" accept="image/png, image/jpeg">
+
+                <div id="js-profile-pic" class="profile-pic__container">Upload Profile Pic
+                    <div id="js-profile-trigger" class="profile-pic__foreground">Upload Profile Pic</div>
+                </div>
+
+                <div class="input__container">
+                    <div class="input-container__single">
+                        <label for="name">Service Number:</label>
+                        <input type="text" required="" name="serviceNo" id="serviceNo" value="" readonly>
+                    </div>
+                    <div class="input-container__single">
+                        <label for="name">Name:</label>
+                        <input type="text" required="" name="name" id="name">
+                    </div>
+                    <div class="input-container__single">
+                        <label for="name">Troop:</label>
+                        <div class="custom-select">
+                            <select name="troop" class="selec">
+                                <option value="alpha">Alpha</option>
+                                <option value="bravo">Bravo</option>
+                                <option value="charlie">Charlie</option>
+                                <option value="delta">Delta</option>
+                                <option value="echo">Echo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-container__single">
+                        <label for="name">Current Password:</label>
+                        <input type="text" required="" name="Cpw" id="Cpw">
+                    </div>
+                    <div class="input-container__single">
+                        <label for="js-password">Password:</label>
+                        <input type="password" required="" id="js-password" name="pass">
+                        <span id="js-toggle-password" class="input-action">Display Password</span>
+                    </div>
+                    <div class="input-container__single">
+                        <label for="js-password-confirm">Confirm Password:</label>
+                        <input type="password" required="" id="js-password-confirm" name="conpass">
+                        <span class="input-action" id="js-suggest-password">Suggest Password</span>
+                    </div>
+                </div>
+
+                <input type="submit" value="Save Profile">
+            </form>
+        </div>
+
+        <script>
+            var x = sessionStorage.getItem("x");
+            var y = sessionStorage.getItem("y");
+            
+            if (x == 0) {
+                window.location.href = "index.html";
+            }
+
+
+            document.getElementById("serviceNo").value = x.toString();
+
+            console.log(x);
+
+        </script>
+        
+        
+
+        <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+
+
+
+        <script id="rendered-js">
+            const messageElement = document.querySelector('#js-message');
+
+            // Image elements
+            const fileUpload = document.querySelector('#js-file-uploader');
+            const profileTrigger = document.querySelector('#js-profile-trigger');
+            const profileBackground = document.querySelector('#js-profile-pic');
+
+            // Password objects
+            const password = document.querySelector('#js-password');
+            const passwordConfirm = document.querySelector('#js-password-confirm');
+            const passwordToggle = document.querySelector('#js-toggle-password');
+            const passwordSuggest = document.querySelector('#js-suggest-password');
+            let passwordDisplayed = false;
+
+            // On form submission, check the passwords match and display a message if the password (would have) been saved.
+            document.querySelector('form').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                if (password.value != passwordConfirm.value) {
+                    messageElement.innerText = 'The passwords don\'t match!';
+                    messageElement.classList.add('settings-message--error');
+                    messageElement.classList.remove('settings-message--success');
+                } else {
+                    messageElement.innerText = 'Settings successfully saved!';
+                    messageElement.classList.add('settings-message--success');
+                    messageElement.classList.remove('settings-message--error');
+                }
+            });
+
+            // Trigger the file upload to set the profile picture
+            profileTrigger.addEventListener('click', function(event) {
+                event.preventDefault();
+                fileUpload.click();
+            });
+
+            // new profile pic added, display it
+            fileUpload.addEventListener("change", function(event) {
+                if (fileUpload.files && fileUpload.files[0]) {
+                    let reader = new FileReader();
+                    reader.onload = function(event) {
+                        // Remove the initial 'set picture image' text
+                        profileBackground.childNodes[0].nodeValue = "";
+                        // Set the new image src as the background
+                        profileBackground.style.backgroundImage = "url('" + event.target.result + "')";
+                    };
+                    reader.readAsDataURL(fileUpload.files[0]);
+                }
+            });
+
+            // Add a suggested password for the user (to both password & confirm password inputs)
+            passwordSuggest.addEventListener('click', function(event) {
+                let newPassword = btoa(Math.random().toString(36).substring(2));
+                password.value = newPassword;
+                passwordConfirm.value = newPassword;
+            });
+
+            // Toggle the type of input the password field is (for user visibility)
+            passwordToggle.addEventListener('click', function(event) {
+                passwordDisplayed = !passwordDisplayed;
+
+                if (passwordDisplayed) {
+                    passwordToggle.innerText = "Hide Password";
+                    passwordConfirm.type = 'text';
+                    password.type = 'text';
+                } else {
+                    passwordToggle.innerText = "Display Password";
+                    passwordConfirm.type = 'password';
+                    password.type = 'password';
+                }
+            });
+
+        </script>
+
+        <script>
+            function uploadImage() {
+
+
+                var ref = firebase.storage().ref();
+                var file = document.querySelector("#js-file-uploader").files[0];
+                var name = file.name;
+                var metadata = {
+                    contentType: file.type
+                };
+                var task = ref.child(name).put(file, metadata);
+                task
+                    .then(snapshot => snapshot.ref.getDownloadURL())
+                    .then(url => {
+                        console.log(url);
+
+                        db.collection('cadet').doc(cid.toString()).update({
+                            image: url.toString()
+                        });
+
+                    })
+                    .catch(console.error);
+            }
+
+        </script>
+
+</body>
+
+</html>

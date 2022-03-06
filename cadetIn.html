@@ -1,0 +1,159 @@
+<head>
+
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
+
+    <style>
+        table {
+            width: 300px;
+        }
+
+        table,
+        th,
+        td {
+
+            border: solid 1px #DDD;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <center>
+
+        <h1>The New Account IDs and Passwords</h1><br>
+
+        <p id="go"></p>
+
+        <script>
+            document.getElementById("go").innerHTML = "of intake " + sessionStorage.getItem("int") + " cadets";
+
+        </script>
+
+    </center>
+
+    <div id="tab">
+        <table id="resultTab">
+            <tr>
+                <th>ID</th>
+                <th>Password</th>
+            </tr>
+
+        </table>
+    </div>
+
+
+
+    <script type="text/javascript">
+        // Initialize Cloud Firestore through Firebase
+        firebase.initializeApp({
+            apiKey: "AIzaSyDwbvS5gMt-dAGIJJs_iuvxjfgSIsWsZW0",
+            authDomain: "mvf2-e0e2e.firebaseapp.com",
+            databaseURL: "https://mvf2-e0e2e.firebaseio.com",
+            projectId: "mvf2-e0e2e",
+            storageBucket: "mvf2-e0e2e.appspot.com",
+            messagingSenderId: "845407842102",
+            appId: "1:845407842102:web:c55bfab8f766b90c69cd97"
+        });
+
+        var db = firebase.firestore();
+
+        var x = sessionStorage.getItem("x");
+        var y = sessionStorage.getItem("y");
+        var int = sessionStorage.getItem("int");
+
+        var k = 1;
+
+        for (j = x; j <= y; j++) {
+
+
+            var length = 8,
+                charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+                retVal = "";
+            for (var i = 0, n = charset.length; i < length; ++i) {
+                retVal += charset.charAt(Math.floor(Math.random() * n));
+            }
+
+            db.collection('cadet').doc(j.toString()).set({
+                serviceNum: j.toString(),
+                password: retVal.toString(),
+                intake: int.toString(),
+                image:""
+            });
+
+            db.collection('fail').doc(j.toString()).set({
+                serviceNum: j.toString(),
+                message: "",
+                abdominis: false,
+                oblique: false,
+                pectorals: false,
+                triceps: false,
+                biceps: false,
+                forearms: false,
+                trapezius: false,
+                adductors: false,
+                calf: false,
+                gluteus: false
+            });
+
+            var table = document.getElementById("resultTab");
+
+            var row = table.insertRow(k);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            cell1.innerHTML = j;
+            cell2.innerHTML = retVal;
+
+            k++;
+        }
+
+    </script>
+
+
+    <center>
+        <p>
+            <input type="button" value="Create PDF" id="btPrint" onclick="createPDF()" />
+        </p>
+
+        <a href="troophome.html">Back to Home</a>
+
+    </center>
+
+    <script>
+        function createPDF() {
+            var sTable = document.getElementById('tab').innerHTML;
+
+            var style = "<style>";
+            style = style + "table {width: 100%;font: 17px Calibri;}";
+            style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
+            style = style + "padding: 2px 3px;text-align: center;}";
+            style = style + "</style>";
+
+            // CREATE A WINDOW OBJECT.
+            var win = window.open('', '', 'height=700,width=700');
+
+            win.document.write('<html><head>');
+            win.document.write('<title>Profile</title>'); // <title> FOR PDF HEADER.
+            win.document.write(style); // ADD STYLE INSIDE THE HEAD TAG.
+            win.document.write('</head>');
+            win.document.write('<body>');
+            win.document.write(sTable); // THE TABLE CONTENTS INSIDE THE BODY TAG.
+            win.document.write('</body></html>');
+
+            win.document.close(); // CLOSE THE CURRENT WINDOW.
+
+            win.print(); // PRINT THE CONTENTS.
+        }
+
+    </script>
+
+
+
+</body>

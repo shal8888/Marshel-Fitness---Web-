@@ -1,0 +1,705 @@
+<html>
+
+<head>
+    <title></title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="css/yourweak.js"></script>
+
+    <link rel="stylesheet" href="css/stylenew.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/yourweak.css" type="text/css" media="all">
+    <!-- //Custom-Stylesheet-Links -->
+    <!--fonts -->
+    <!-- //fonts -->
+    <!--<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="all">-->
+    <!-- //Font-Awesome-File-Links -->
+
+    <!-- Google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Mukta:200,300,400,500,600,700,800" rel="stylesheet">
+
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
+    
+    <script>
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+
+            var x = sessionStorage.getItem("x");
+
+            if (x == 0) {
+                window.location.href = "index.html";
+            }
+
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+
+    </script>
+
+
+</head>
+
+<body>
+
+    <section class="main">
+        <div class="layer">
+
+            <div class="bottom-grid">
+                <div class="logo">
+                    <h1> <a href="index.html"><span class=""><img src="images/logo.png" style="width: 200px ;height: auto; margin-top: 0%;"></span></a></h1>
+                </div>
+                <div class="links">
+                    <ul class="links-unordered-list">
+                        <li class="">
+                            <a href="homenew.html" class="">Home</a>
+                        </li>
+                        <li class="">
+                            <a href="testresults.html" class="">Test Results</a>
+                        </li>
+                        <li class="active">
+                            <a href="yourweak.html" class="">Your Weakness</a>
+                        </li>
+                        <li class="">
+                            <a href="profile.html" class="">Profile</a>
+                        </li>
+                        <li class="">
+                            <a href="index.html" class="">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <section id="section0"></section>
+
+        <div>
+            <div class="base">
+                <img src="images/muscles/muscles.png" style="width: 100%">
+                <div class="overlay absimg" id="1"><img src="images/muscles/abs.png" style="width: 100%"></div>
+                <div class="overlay obliqueimg" id="2"><img src="images/muscles/oblique.png" style="width: 100%"></div>
+                <div class="overlay pectoralsimg" id="3"><img src="images/muscles/pectorals.png" style="width: 100%"></div>
+                <div class="overlay tricepsimg" id="4"><img src="images/muscles/triceps.png" style="width: 100%"></div>
+                <div class="overlay bicepsimg" id="5"><img src="images/muscles/biceps.png" style="width: 100%"></div>
+                <div class="overlay forearmsimg" id="6"><img src="images/muscles/forearms.png" style="width: 100%"></div>
+                <div class="overlay trapeziusimg" id="7"><img src="images/muscles/trapezius.png" style="width: 100%"></div>
+                <div class="overlay adductorsimg" id="8"><img src="images/muscles/adductors.png" style="width: 100%"></div>
+                <div class="overlay adductorsimg" id="9"><img src="images/muscles/gastrocnemius.png" style="width: 100%"></div>
+                <div class="overlay adductorsimg" id="11"><img src="images/muscles/gluteus.png" style="width: 100%"></div>
+            </div>
+        </div>
+
+        <div class="button_container">
+
+            <button class="btn abdominis" id="10"><span><a href="#section1">Abdominis</a></span></button>
+            <button class="btn Oblique" id="20"><span><a href="#section2">Oblique</a></span></button>
+            <button class="btn Pectorals" id="30"><span><a href="#section3">Pectorals</a></span></button>
+            <button class="btn Triceps" id="40"><span><a href="#section4">Triceps</a></span></button>
+            <button class="btn Biceps" id="50"><span><a href="#section5">Biceps</a></span></button>
+            <button class="btn Forearms" id="60"><span><a href="#section6">Forearms</a></span></button>
+            <button class="btn Trapezius" id="70"><span><a href="#section7">Trapezius</a></span></button>
+            <button class="btn Adductors" id="80"><span><a href="#section8">Adductors</a></span></button>
+            <button class="btn Adductors" id="90"><span><a href="#section9">Gastrocnemius</a></span></button>
+            <button class="btn Adductors" id="100"><span><a href="#section10">Gluteus</a></span></button>
+
+        </div>
+
+
+        <section class="main" id="section1">
+            <hr>
+            <div class="cont">
+                <img src="images/ex/1.1.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/1.2.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="right one">
+                <h1 class="exname">ABDOMINIS</h1>
+                <h2 class="des">The abdominal muscles support the trunk, allow movement and hold organs in place by regulating internal abdominal pressure. The deep abdominal muscles, together with muscles in the back, make up your core muscles. Your core muscles help keep your body stable and balanced, and protect your spine.</h2>
+                <button class="exbtn"><a class="exbtntxt" href="#section0">Go To Top</a></button>
+                <button class="exbtn"><a class="exbtntxt" href="#section11">Stretching</a></button>
+            </div>
+
+        </section>
+
+        <section class="main" id="section2">
+            <hr>
+            <div class="cont">
+                <img src="images/ex/2.1.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/2.2.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/2.3.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="right two">
+                <h1 class="exname">OBLIQUE</h1>
+                <h2 class="des">The external obliques on either side not only help rotate the trunk, but they perform a few other vital functions. These muscles help pull the chest, as a whole, downwards, which compresses the abdominal cavity. Although relatively minor in scope, the external oblique muscle also supports the rotation of the spine.</h2>
+                <button class="exbtn"><a class="exbtntxt" href="#section0">Go To Top</a></button>
+                <button class="exbtn"><a class="exbtntxt" href="#section11">Stretching</a></button>
+            </div>
+
+        </section>
+
+        <section class="main" id="section3">
+            <hr>
+            <div class="cont">
+                <img src="images/ex/3.1.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/3.2.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="right three">
+                <h1 class="exname">PECTORALE</h1>
+                <h2 class="des">The pectorals are predominantly used to control the movement of the arm, with the contractions of the pectoralis major pulling on the humerus to create lateral, vertical, or rotational motion. The pectorals also play a part in deep inhalation, pulling the ribcage to create room for the lungs to expan.</h2>
+                <button class="exbtn"><a class="exbtntxt" href="#section0">Go To Top</a></button>
+                <button class="exbtn"><a class="exbtntxt" href="#section11">Stretching</a></button>
+            </div>
+
+        </section>
+
+        <section class="main" id="section4">
+            <hr>
+            <div class="cont">
+                <img src="images/ex/4.1.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/4.2.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/4.3.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/4.4.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="right four">
+                <h1 class="exname">TRICEPS</h1>
+                <h2 class="des">The triceps help stabilize your shoulder joint and they act as an extensor of the elbow and shoulder. As your triceps become stronger with these exercises, the strength and stability of your shoulders and elbows increase.</h2>
+                <button class="exbtn"><a class="exbtntxt" href="#section0">Go To Top</a></button>
+                <button class="exbtn"><a class="exbtntxt" href="#section11">Stretching</a></button>
+            </div>
+
+        </section>
+
+        <section class="main" id="section5">
+            <hr>
+            <div class="cont">
+                <img src="images/ex/5.1.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/5.2.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/5.3.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="right five">
+                <h1 class="exname">BICEPS</h1>
+                <h2 class="des">The primary function of the Bicep muscle is to move the forearm towards the shoulder (elbow flexion). The secondary function of the Bicep is supination of the forearm. This means turning the hand from a palms-down position to a palms-up position. Preacher curls.</h2>
+                <button class="exbtn"><a class="exbtntxt" href="#section0">Go To Top</a></button>
+                <button class="exbtn"><a class="exbtntxt" href="#section11">Stretching</a></button>
+            </div>
+
+        </section>
+
+        <section class="main" id="section6">
+            <hr>
+            <div class="cont">
+                <img src="images/ex/6.1.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/6.2.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/6.3.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="right six">
+                <h1 class="exname">FOREARMS</h1>
+                <h2 class="des">Strengthening your forearms also increases grip strength, which is related to upper body strength. A strong grip helps you carry, hold, and lift items in your everyday life and during athletic activity. Plus, you'll have more power when you work out, which will bring more strength to your entire body.</h2>
+                <button class="exbtn"><a class="exbtntxt" href="#section0">Go To Top</a></button>
+                <button class="exbtn"><a class="exbtntxt" href="#section11">Stretching</a></button>
+            </div>
+
+        </section>
+
+        <section class="main" id="section7">
+            <hr>
+            <div class="cont">
+                <img src="images/ex/7.1.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="right seven">
+                <h1 class="exname">TRAPEZIUS</h1>
+                <h2 class="des">The trapezius muscle is a postural and active movement muscle, used to tilt and turn the head and neck, shrug, steady the shoulders, and twist the arms. The trapezius elevates, depresses, rotates, and retracts the scapula, or shoulder blade. Innervation of the trapezius is derived from the spinal accessory nerve.</h2>
+                <button class="exbtn"><a class="exbtntxt" href="#section0">Go To Top</a></button>
+                <button class="exbtn"><a class="exbtntxt" href="#section11">Stretching</a></button>
+            </div>
+
+        </section>
+
+        <section class="main" id="section8">
+            <hr>
+            <div class="cont">
+                <img src="images/ex/8.1.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/8.2.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/8.3.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/8.4.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="right eight">
+                <h1 class="exname">ADDUCTORS</h1>
+                <h2 class="des">The adductors are fan-like muscles in the upper thigh that pull the legs together when they contract. They also help stabilize the hip joint. The adductors attach from the pelvis to the femur (thigh bone). In a human, the adductors muscles found in the thigh area of the leg are commonly referred to as groin muscles.</h2>
+                <button class="exbtn"><a class="exbtntxt" href="#section0">Go To Top</a></button>
+                <button class="exbtn"><a class="exbtntxt" href="#section11">Stretching</a></button>
+            </div>
+
+        </section>
+
+        <section class="main" id="section9">
+            <hr>
+            <div class="cont">
+                <img src="images/ex/9.1.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/9.2.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="right nine">
+                <h1 class="exname">GASTROCNEMIUS</h1>
+                <h2 class="des">Along with the soleus muscle, the gastrocnemius forms half of the calf muscle. Its function is plantar flexing the foot at the ankle joint and flexing the leg at the knee joint. The gastrocnemius is primarily involved in running, jumping and other "fast" movements of leg, and to a lesser degree in walking and standing.</h2>
+                <button class="exbtn"><a class="exbtntxt" href="#section0">Go To Top</a></button>
+                <button class="exbtn"><a class="exbtntxt" href="#section11">Stretching</a></button>
+            </div>
+
+        </section>
+
+        <section class="main" id="section10">
+            <hr>
+            <div class="cont">
+                <img src="images/ex/10.1.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/10.2.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="right ten">
+                <h1 class="exname">GLUTEUS</h1>
+                <h2 class="des">The functions of muscles includes extension, abduction, lateral(external) rotation and medial (internal) rotation of the hip joint. The gluteus maximus also supports the extended knee through the iliotibial tract.</h2>
+                <button class="exbtn"><a class="exbtntxt" href="#section0">Go To Top</a></button>
+                <button class="exbtn"><a class="exbtntxt" href="#section11">Stretching</a></button>
+            </div>
+
+        </section>
+
+        <section class="main" id="section11">
+            <hr>
+            <div class="cont">
+                <img src="images/ex/11.1.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/11.2.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/11.3.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/11.4.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/11.5.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/11.6.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/11.7.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="cont">
+                <img src="images/ex/11.8.gif" class="gif">
+                <div class="grad"></div>
+            </div>
+
+            <div class="right eleven">
+                <h1 class="exname">STRETCHING</h1>
+                <h2 class="des">Stretching keeps the muscles flexible, strong, and healthy, and we need that flexibility to maintain a range of motion in the joints. Without it, the muscles shorten and become tight. Then, when you call on the muscles for activity, they are weak and unable to extend all the way.</h2>
+                <button class="exbtn"><a class="exbtntxt" href="#section0">Go To Top</a></button>
+            </div>
+
+        </section>
+
+    </section>
+
+    <script>
+        var dmg1 = false;
+        var dmg2 = false;
+        var dmg3 = false;
+        var dmg4 = false;
+        var dmg5 = false;
+        var dmg6 = false;
+        var dmg7 = false;
+        var dmg8 = false;
+        var dmg9 = false;
+        var dmg10 = false;
+
+        firebase.initializeApp({
+            apiKey: "AIzaSyDwbvS5gMt-dAGIJJs_iuvxjfgSIsWsZW0",
+            authDomain: "mvf2-e0e2e.firebaseapp.com",
+            databaseURL: "https://mvf2-e0e2e.firebaseio.com",
+            projectId: "mvf2-e0e2e",
+            storageBucket: "mvf2-e0e2e.appspot.com",
+            messagingSenderId: "845407842102",
+            appId: "1:845407842102:web:c55bfab8f766b90c69cd97"
+        });
+
+        var db = firebase.firestore();
+
+        var x = sessionStorage.getItem("x");
+        console.log(x);
+
+        var docRef = db.collection("fail").where("serviceNum", "==", x.toString());
+
+        docRef.get().then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    console.log(doc.id, " => ", doc.data());
+
+                    var mus1 = doc.data().abdominis;
+                    var mus2 = doc.data().oblique;
+                    var mus3 = doc.data().pectorals;
+                    var mus4 = doc.data().triceps;
+                    var mus5 = doc.data().biceps;
+                    var mus6 = doc.data().forearms;
+                    var mus7 = doc.data().trapezius;
+                    var mus8 = doc.data().adductors;
+                    var mus9 = doc.data().calf;
+                    var mus10 = doc.data().gluteus;
+
+
+                    if (mus1 == true) {
+                        document.getElementById("1").style.opacity = "0.5";
+                        dmg1 = true;
+                    }
+                    if (mus2 == true) {
+                        document.getElementById("2").style.opacity = "0.5";
+                        dmg2 = true;
+                    }
+                    if (mus3 == true) {
+                        document.getElementById("3").style.opacity = "0.5";
+                        dmg3 = true;
+                    }
+                    if (mus4 == true) {
+                        document.getElementById("4").style.opacity = "0.5";
+                        dmg4 = true;
+                    }
+                    if (mus5 == true) {
+                        document.getElementById("5").style.opacity = "0.5";
+                        dmg5 = true;
+                    }
+                    if (mus6 == true) {
+                        document.getElementById("6").style.opacity = "0.5";
+                        dmg6 = true;
+                    }
+                    if (mus7 == true) {
+                        document.getElementById("7").style.opacity = "0.5";
+                        dmg7 = true;
+                    }
+                    if (mus8 == true) {
+                        document.getElementById("8").style.opacity = "0.5";
+                        dmg8 = true;
+                    }
+                    if (mus9 == true) {
+                        document.getElementById("9").style.opacity = "0.5";
+                        dmg9 = true;
+                    }
+                    if (mus10 == true) {
+                        document.getElementById("11").style.opacity = "0.5";
+                        dmg10 = true;
+                    }
+
+
+                });
+            })
+            .catch(function(error) {
+                console.log("Error getting documents: ", error);
+            });
+
+    </script>
+
+    <script>
+        document.getElementById("10").onmouseover = function() {
+            mouseOver1()
+        };
+        document.getElementById("10").onmouseout = function() {
+            mouseOut1()
+        };
+
+        function mouseOver1() {
+            document.getElementById("1").style.opacity = "1";
+        }
+
+        function mouseOut1() {
+            if (dmg1 == false) {
+                document.getElementById("1").style.opacity = "0";
+            }
+            else{
+                document.getElementById("1").style.opacity = "0.5";
+            }
+        }
+
+        document.getElementById("20").onmouseover = function() {
+            mouseOver2()
+        };
+        document.getElementById("20").onmouseout = function() {
+            mouseOut2()
+        };
+
+        function mouseOver2() {
+            document.getElementById("2").style.opacity = "1";
+        }
+
+        function mouseOut2() {
+            if (dmg2 == false) {
+                document.getElementById("2").style.opacity = "0";
+            }
+            else{
+                document.getElementById("2").style.opacity = "0.5";
+            }
+        }
+
+        document.getElementById("30").onmouseover = function() {
+            mouseOver3()
+        };
+        document.getElementById("30").onmouseout = function() {
+            mouseOut3()
+        };
+
+        function mouseOver3() {
+            document.getElementById("3").style.opacity = "1";
+        }
+
+        function mouseOut3() {
+            if (dmg3 == false) {
+                document.getElementById("3").style.opacity = "0";
+            }
+            else{
+                document.getElementById("3").style.opacity = "0.5";
+            }
+        }
+
+        document.getElementById("40").onmouseover = function() {
+            mouseOver4()
+        };
+        document.getElementById("40").onmouseout = function() {
+            mouseOut4()
+        };
+
+        function mouseOver4() {
+            document.getElementById("4").style.opacity = "1";
+        }
+
+        function mouseOut4() {
+            if (dmg4 == false) {
+                document.getElementById("4").style.opacity = "0";
+            }
+            else{
+                document.getElementById("4").style.opacity = "0.5";
+            }
+        }
+
+        document.getElementById("50").onmouseover = function() {
+            mouseOver5()
+        };
+        document.getElementById("50").onmouseout = function() {
+            mouseOut5()
+        };
+
+        function mouseOver5() {
+            document.getElementById("5").style.opacity = "1";
+        }
+
+        function mouseOut5() {
+            if (dmg5 == false) {
+                document.getElementById("5").style.opacity = "0";
+            }
+            else{
+                document.getElementById("5").style.opacity = "0.5";
+            }
+        }
+
+        document.getElementById("60").onmouseover = function() {
+            mouseOver6()
+        };
+        document.getElementById("60").onmouseout = function() {
+            mouseOut6()
+        };
+
+        function mouseOver6() {
+            document.getElementById("6").style.opacity = "1";
+        }
+
+        function mouseOut6() {
+            if (dmg6 == false) {
+                document.getElementById("6").style.opacity = "0";
+            }
+            else{
+                document.getElementById("6").style.opacity = "0.5";
+            }
+        }
+
+        document.getElementById("70").onmouseover = function() {
+            mouseOver7()
+        };
+        document.getElementById("70").onmouseout = function() {
+            mouseOut7()
+        };
+
+        function mouseOver7() {
+            document.getElementById("7").style.opacity = "1";
+        }
+
+        function mouseOut7() {
+            if (dmg7 == false) {
+                document.getElementById("7").style.opacity = "0";
+            }
+            else{
+                document.getElementById("7").style.opacity = "0.5";
+            }
+        }
+
+        document.getElementById("80").onmouseover = function() {
+            mouseOver8()
+        };
+        document.getElementById("80").onmouseout = function() {
+            mouseOut8()
+        };
+
+        function mouseOver8() {
+            document.getElementById("8").style.opacity = "1";
+        }
+
+        function mouseOut8() {
+            if (dmg8 == false) {
+                document.getElementById("8").style.opacity = "0";
+            }
+            else{
+                document.getElementById("8").style.opacity = "0.5";
+            }
+        }
+
+        document.getElementById("90").onmouseover = function() {
+            mouseOver9()
+        };
+        document.getElementById("90").onmouseout = function() {
+            mouseOut9()
+        };
+
+        function mouseOver9() {
+            document.getElementById("9").style.opacity = "1";
+        }
+
+        function mouseOut9() {
+            if (dmg9 == false) {
+                document.getElementById("9").style.opacity = "0";
+            }
+            else{
+                document.getElementById("9").style.opacity = "0.5";
+            }
+        }
+
+        document.getElementById("100").onmouseover = function() {
+            mouseOver10()
+        };
+        document.getElementById("100").onmouseout = function() {
+            mouseOut10()
+        };
+
+        function mouseOver10() {
+            document.getElementById("11").style.opacity = "1";
+        }
+
+        function mouseOut10() {
+            if (dmg10 == false) {
+                document.getElementById("11").style.opacity = "0";
+            }
+            else{
+                document.getElementById("11").style.opacity = "0.5";
+            }
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<head>
+
+    <link rel="stylesheet" href="css/load.css" type="text/css" media="all">
+
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
+
+    <script>
+        var x = sessionStorage.getItem("x");
+        var y = sessionStorage.getItem("y");
+
+        if (x == 0) {
+            window.location.href = "trooplog.html";
+        }
+
+
+        firebase.initializeApp({
+            apiKey: "AIzaSyDwbvS5gMt-dAGIJJs_iuvxjfgSIsWsZW0",
+            authDomain: "mvf2-e0e2e.firebaseapp.com",
+            databaseURL: "https://mvf2-e0e2e.firebaseio.com",
+            projectId: "mvf2-e0e2e",
+            storageBucket: "mvf2-e0e2e.appspot.com",
+            messagingSenderId: "845407842102",
+            appId: "1:845407842102:web:c55bfab8f766b90c69cd97"
+        });
+
+
+        console.log("x =", x);
+        console.log("y =", y);
+
+        var db = firebase.firestore();
+
+        var docRef = db.collection("admin").where("id", "==", x.toString()).where("password", "==", y.toString());
+
+        docRef.get().then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    window.location.href = "troophome.html";
+                });
+            })
+            .catch(function(error) {
+                window.location.href = "trooplog.html";
+                window.alert("Worng Username or Password");
+            });
+
+    </script>
+
+</head>
+
+<body>
+    <h1></h1>
+    <div class="arc">
+        <div></div>
+</body>

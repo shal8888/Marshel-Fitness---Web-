@@ -1,0 +1,49 @@
+<head>
+    
+    <link rel="stylesheet" href="css/load.css" type="text/css" media="all">
+    
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
+    
+    <script>
+        
+        
+        
+        firebase.initializeApp({
+                      apiKey: "AIzaSyDwbvS5gMt-dAGIJJs_iuvxjfgSIsWsZW0",
+                authDomain: "mvf2-e0e2e.firebaseapp.com",
+                databaseURL: "https://mvf2-e0e2e.firebaseio.com",
+                projectId: "mvf2-e0e2e",
+                storageBucket: "mvf2-e0e2e.appspot.com",
+                messagingSenderId: "845407842102",
+                appId: "1:845407842102:web:c55bfab8f766b90c69cd97"
+                    });
+            var x = sessionStorage.getItem("x");
+            var y = sessionStorage.getItem("y");
+        
+        console.log("x =", x);
+        console.log("y =", y);
+
+        if(x==0){
+            window.location.href = "index.html";
+        }
+            var db = firebase.firestore();
+            
+            var docRef = db.collection("cadet").where("serviceNum", "==", x.toString()).where("password", "==", y.toString());
+            
+            docRef.get().then(function(querySnapshot) {
+                    querySnapshot.forEach(function(doc) {
+                        window.location.href = "homenew.html";
+                    });
+                })
+                .catch(function(error) {
+                    window.alert("Worng Username or Password");
+                    window.location.href = "index.html";
+                    
+                });
+    
+    </script>
+
+</head>
+
+<body><h1>Wrong Username or Password</h1><div class="arc"></div></body>

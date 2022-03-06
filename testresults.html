@@ -1,0 +1,595 @@
+<html>
+
+<head>
+    <title></title>
+
+    <link rel="stylesheet" href="css/stylenew.css" type="text/css" media="all">
+    <!-- //Custom-Stylesheet-Links -->
+    <!--fonts -->
+    <!-- //fonts -->
+    <!--<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="all">-->
+    <!-- //Font-Awesome-File-Links -->
+
+    <!-- Google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Mukta:200,300,400,500,600,700,800" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/testresults.css" type="text/css" media="all">
+    <script src="css/boot1.js"></script>
+    <script src="css/boot2.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
+    
+    <script>
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+
+            var x = sessionStorage.getItem("x");
+
+            if (x == 0) {
+                window.location.href = "index.html";
+            }
+
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+
+    </script>
+
+
+</head>
+
+<body>
+
+    <section class="main">
+        <div class="layer">
+
+            <div class="bottom-grid">
+                <div class="logo">
+                    <h1> <a href="index.html"><span class=""><img src="images/logo.png" style="width: 200px ;height: auto" class="logo"></span></a></h1>
+                </div>
+                <div class="links">
+                    <ul class="links-unordered-list">
+                        <li class="">
+                            <a href="homenew.html" class="">Home</a>
+                        </li>
+                        <li class="active">
+                            <a href="testresults.html" class="">Test Results</a>
+                        </li>
+                        <li class="">
+                            <a href="yourweak.html" class="">Your Weakness</a>
+                        </li>
+                        <li class="">
+                            <a href="profile.html" class="">Profile</a>
+                        </li>
+                        <li class="">
+                            <a href="index.html" class="">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <h1>Your Test Results<br></h1>
+
+        <div class="charts-container cf">
+            <div class="charttop" id="graph-1-container">
+                <h2 class="title">Total</h2>
+                <div class="chart-svg">
+                    <svg class="chart-line" id="chart-1" viewBox="0 0 80 40">
+                        <defs>
+                            <clipPath id="clip" x="0" y="0" width="80" height="40">
+                                <rect id="clip-rect" x="-80" y="0" width="77" height="38.7" />
+                            </clipPath>
+
+                            <linearGradient id="gradient-1">
+                                <stop offset="0" stop-color="#13c8e9" />
+                                <stop offset="100" stop-color="#01f4cf" />
+                            </linearGradient>
+
+                            <linearGradient id="gradient-2">
+                                <stop offset="0" stop-color="#954ce9" />
+                                <stop offset="100" stop-color="#e800ca" />
+                            </linearGradient>
+
+
+                            <linearGradient id="gradient-3" x1="0%" y1="0%" x2="0%" y2="100%">>
+                                <stop offset="0" stop-color="rgba(0, 213, 189, 1)" stop-opacity="0.5" />
+                                <stop offset="0.5" stop-color="rgba(0, 213, 189, 1)" stop-opacity="0.25" />
+                                <stop offset="1" stop-color="rgba(0, 213, 189, 1)" stop-opacity="0" />
+                            </linearGradient>
+
+
+                            <linearGradient id="gradient-4" x1="0%" y1="0%" x2="0%" y2="100%">>
+                                <stop offset="0" stop-color="rgba(149, 76, 233, 1)" stop-opacity="0.5" />
+                                <stop offset="0.5" stop-color="rgba(149, 76, 233, 1)" stop-opacity="0.25" />
+                                <stop offset="1" stop-color="rgba(149, 76, 233, 1)" stop-opacity="0" />
+                            </linearGradient>
+
+                        </defs>
+                    </svg>
+                    <h3 class="valueX">Month</h3>
+                </div>
+                <div class="chart-values">
+                    <p class="h-value"></p>
+                    <p class="percentage-value"></p>
+                    <p class="total-gain"></p>
+                </div>
+                <div class="triangle green"></div>
+            </div>
+
+
+        </div>
+
+        <div class="charts-container cf">
+            <div class="chart" id="graph-2-container">
+                <h2 class="title">Push Ups</h2>
+                <div class="chart-svg">
+                    <svg class="chart-line" id="chart-2" viewBox="0 0 80 40">
+                    </svg>
+                    <h3 class="valueX">Month</h3>
+                </div>
+                <div class="chart-values">
+                    <p class="h-value"></p>
+                    <p class="percentage-value"></p>
+                    <p class="total-gain"></p>
+                </div>
+                <div class="triangle red"></div>
+            </div>
+            <div class="chart" id="graph-3-container">
+                <h2 class="title">Sit Ups</h2>
+                <div class="chart-svg">
+                    <svg class="chart-line" id="chart-3" viewBox="0 0 80 40">
+                    </svg>
+                    <h3 class="valueX">Month</h3>
+                </div>
+                <div class="chart-values">
+                    <p class="h-value"></p>
+                    <p class="percentage-value"></p>
+                    <p class="total-gain"></p>
+                </div>
+                <div class="triangle red"></div>
+            </div>
+        </div>
+
+        <div class="charts-container cf">
+            <div class="chart" id="graph-4-container">
+                <h2 class="title">Rope Climbing</h2>
+                <div class="chart-svg">
+                    <svg class="chart-line" id="chart-4" viewBox="0 0 80 40">
+                    </svg>
+                    <h3 class="valueX">Month</h3>
+                </div>
+                <div class="chart-values">
+                    <p class="h-value"></p>
+                    <p class="percentage-value"></p>
+                    <p class="total-gain"></p>
+                </div>
+                <div class="triangle red"></div>
+            </div>
+            <div class="chart" id="graph-5-container">
+                <h2 class="title">Arm Bending</h2>
+                <div class="chart-svg">
+                    <svg class="chart-line" id="chart-5" viewBox="0 0 80 40">
+                    </svg>
+                    <h3 class="valueX">Month</h3>
+                </div>
+                <div class="chart-values">
+                    <p class="h-value"></p>
+                    <p class="percentage-value"></p>
+                    <p class="total-gain"></p>
+                </div>
+                <div class="triangle red"></div>
+            </div>
+        </div>
+
+        <div class="charts-container cf">
+            <div class="chart" id="graph-6-container">
+                <h2 class="title">Sit And Reach</h2>
+                <div class="chart-svg">
+                    <svg class="chart-line" id="chart-6" viewBox="0 0 80 40">
+                    </svg>
+                    <h3 class="valueX">Month</h3>
+                </div>
+                <div class="chart-values">
+                    <p class="h-value"></p>
+                    <p class="percentage-value"></p>
+                    <p class="total-gain"></p>
+                </div>
+                <div class="triangle red"></div>
+            </div>
+            <div class="chart" id="graph-7-container">
+                <h2 class="title">2 Mile Run</h2>
+                <div class="chart-svg">
+                    <svg class="chart-line" id="chart-7" viewBox="0 0 80 40">
+                    </svg>
+                    <h3 class="valueX">Month</h3>
+                </div>
+                <div class="chart-values">
+                    <p class="h-value"></p>
+                    <p class="percentage-value"></p>
+                    <p class="total-gain"></p>
+                </div>
+                <div class="triangle red"></div>
+            </div>
+        </div>
+
+        <div class="charts-container cf">
+            <div class="chart" id="graph-8-container">
+                <h2 class="title">Standing Board Jump</h2>
+                <div class="chart-svg">
+                    <svg class="chart-line" id="chart-8" viewBox="0 0 80 40">
+                    </svg>
+                    <h3 class="valueX">Month</h3>
+                </div>
+                <div class="chart-values">
+                    <p class="h-value"></p>
+                    <p class="percentage-value"></p>
+                    <p class="total-gain"></p>
+                </div>
+                <div class="triangle red"></div>
+            </div>
+            <div class="chart" id="graph-9-container">
+                <h2 class="title">Shuttle Run</h2>
+                <div class="chart-svg">
+                    <svg class="chart-line" id="chart-9" viewBox="0 0 80 40">
+                    </svg>
+                    <h3 class="valueX">Month</h3>
+                </div>
+                <div class="chart-values">
+                    <p class="h-value"></p>
+                    <p class="percentage-value"></p>
+                    <p class="total-gain"></p>
+                </div>
+                <div class="triangle red"></div>
+            </div>
+        </div>
+
+
+        <script>
+            var x = sessionStorage.getItem("x");
+            console.log(x);
+
+            var chart_h = 40;
+            var chart_w = 80;
+            var stepX = 77 / 14;
+            var j = 0;
+            var k =0;
+            var arrayA=[];
+            var arrayB=[];
+            var arrayC=[];
+            var arrayD=[];
+            var arrayE=[];
+            var arrayF=[];
+            var arrayG=[];
+            var arrayH=[];
+            var arrayI=[];
+            
+            
+            
+            firebase.initializeApp({
+                apiKey: "AIzaSyDwbvS5gMt-dAGIJJs_iuvxjfgSIsWsZW0",
+                authDomain: "mvf2-e0e2e.firebaseapp.com",
+                databaseURL: "https://mvf2-e0e2e.firebaseio.com",
+                projectId: "mvf2-e0e2e",
+                storageBucket: "mvf2-e0e2e.appspot.com",
+                messagingSenderId: "845407842102",
+                appId: "1:845407842102:web:c55bfab8f766b90c69cd97"
+            });
+
+            var db = firebase.firestore();
+
+            var docRef = db.collection("result").where("serviceNum", "==", x.toString());
+
+            var sortDoc = docRef.orderBy("year", "desc").orderBy("month", "desc").limit(10);
+
+            sortDoc.get().then(function(querySnapshot) {
+                    querySnapshot.forEach(function(doc) {
+                        console.log("hari");
+                        console.log(doc.data());
+                        arrayA[j] = parseInt(doc.data().total);
+                        arrayB[j] = parseInt(doc.data().pushUps);
+                        arrayC[j] = parseInt(doc.data().sitUps);
+                        arrayD[j] = parseInt(doc.data().rpClimbing);
+                        arrayE[j] = parseInt(doc.data().armBending);
+                        arrayF[j] = parseInt(doc.data().aAndR);
+                        arrayG[j] = parseInt(doc.data().twoMileRun);
+                        arrayH[j] = parseInt(doc.data().stbJump);
+                        arrayI[j] = parseInt(doc.data().shtlRun);
+                        j++;
+                    });
+                })
+                .catch(function(error) {
+                    window.alert("Worng Username or Password");
+                    window.location.href = "index.html";
+
+                });
+            
+            var a1 = arrayA[0];
+            console.log(arrayA[0]);
+
+            var chart_1_y = [
+                66, 52, 68, 60, 63, 74, 83, 63, 70, 77
+            ];
+            var chart_2_y = [
+                56, 56, 23, 56, 59, 14, 87, 98, 88, 77
+            ];
+            var chart_3_y = [
+                89, 65, 55, 63, 56, 89, 54, 30, 0, 89
+            ];
+            var chart_4_y = [
+                22, 22, 43, 45, 63, 66, 78, 10, 80, 76
+            ];
+            var chart_5_y = [
+                56, 51, 58, 65, 65, 45, 77, 32, 19, 12
+            ];
+            var chart_6_y = [
+                75, 76, 70, 54, 76, 55, 85, 65, 70, 76
+            ];
+            var chart_7_y = [
+                71, 65, 53, 48, 73, 73, 76, 45, 43, 76
+            ];
+            var chart_8_y = [
+                49, 43, 50, 65, 54, 32, 65, 65, 55, 36
+            ];
+            var chart_9_y = [
+                65, 88, 64, 65, 78, 67, 76, 60, 60, 87
+            ];
+
+            
+
+            console.log(chart_1_y);
+            console.log(chart_2_y);
+
+            function point(x, y) {
+                x: 0;
+                y: 0;
+            }
+            /* DRAW GRID */
+            function drawGrid(graph) {
+                var graph = Snap(graph);
+                var g = graph.g();
+                g.attr('id', 'grid');
+                for (i = 0; i <= stepX + 2; i++) {
+                    var horizontalLine = graph.path(
+                        "M" + 0 + "," + stepX * i + " " +
+                        "L" + 77 + "," + stepX * i);
+                    horizontalLine.attr('class', 'horizontal');
+                    g.add(horizontalLine);
+                };
+                for (i = 0; i <= 14; i++) {
+                    var horizontalLine = graph.path(
+                        "M" + stepX * i + "," + 38.7 + " " +
+                        "L" + stepX * i + "," + 0)
+                    horizontalLine.attr('class', 'vertical');
+                    g.add(horizontalLine);
+                };
+            }
+            drawGrid('#chart-1');
+            drawGrid('#chart-2');
+            drawGrid('#chart-3');
+            drawGrid('#chart-4');
+            drawGrid('#chart-5');
+            drawGrid('#chart-6');
+            drawGrid('#chart-7');
+            drawGrid('#chart-8');
+            drawGrid('#chart-9');
+
+            function drawLineGraph(graph, points, container, id) {
+
+
+                var graph = Snap(graph);
+
+
+                /*END DRAW GRID*/
+
+                /* PARSE POINTS */
+                var myPoints = [];
+                var shadowPoints = [];
+
+                function parseData(points) {
+                    for (i = 0; i < points.length; i++) {
+                        var p = new point();
+                        var pv = points[i] / 100 * 40;
+                        p.x = 83.7 / points.length * i + 1;
+                        p.y = 40 - pv;
+                        if (p.x > 78) {
+                            p.x = 78;
+                        }
+                        myPoints.push(p);
+                    }
+                }
+
+                var segments = [];
+
+                function createSegments(p_array) {
+                    for (i = 0; i < p_array.length; i++) {
+                        var seg = "L" + p_array[i].x + "," + p_array[i].y;
+                        if (i === 0) {
+                            seg = "M" + p_array[i].x + "," + p_array[i].y;
+                        }
+                        segments.push(seg);
+                    }
+                }
+
+                function joinLine(segments_array, id) {
+                    var line = segments_array.join(" ");
+                    var line = graph.path(line);
+                    line.attr('id', 'graph-' + id);
+                    var lineLength = line.getTotalLength();
+
+                    line.attr({
+                        'stroke-dasharray': lineLength,
+                        'stroke-dashoffset': lineLength
+                    });
+                }
+
+                function calculatePercentage(points, graph) {
+                    var initValue = points[0];
+                    var endValue = points[points.length - 1];
+                    var sum = endValue - initValue;
+                    var prefix;
+                    var percentageGain;
+                    var stepCount = 1300 / sum;
+
+                    function findPrefix() {
+                        if (sum > 0) {
+                            prefix = "+";
+                        } else {
+                            prefix = "";
+                        }
+                    }
+
+                    var percentagePrefix = "";
+
+                    function percentageChange() {
+                        percentageGain = initValue / endValue * 100;
+
+                        if (percentageGain > 100) {
+                            console.log('over100');
+                            percentageGain = Math.round(percentageGain * 100 * 10) / 100;
+                        } else if (percentageGain < 100) {
+                            console.log('under100');
+                            percentageGain = Math.round(percentageGain * 10) / 10;
+                        }
+                        if (initValue > endValue) {
+
+                            percentageGain = endValue / initValue * 100 - 100;
+                            percentageGain = percentageGain.toFixed(2);
+
+                            percentagePrefix = "";
+                            $(graph).find('.percentage-value').addClass('negative');
+                        } else {
+                            percentagePrefix = "+";
+                        }
+                        if (endValue > initValue) {
+                            percentageGain = endValue / initValue * 100;
+                            percentageGain = Math.round(percentageGain);
+                        }
+                    };
+                    percentageChange();
+                    findPrefix();
+
+                    var percentage = $(graph).find('.percentage-value');
+                    var totalGain = $(graph).find('.total-gain');
+                    var hVal = $(graph).find('.h-value');
+
+                    function count(graph, sum) {
+                        var totalGain = $(graph).find('.total-gain');
+                        var i = 0;
+                        var time = 1300;
+                        var intervalTime = Math.abs(time / sum);
+                        var timerID = 0;
+                        if (sum > 0) {
+                            var timerID = setInterval(function() {
+                                i++;
+                                totalGain.text(percentagePrefix + i);
+                                if (i === sum) clearInterval(timerID);
+                            }, intervalTime);
+                        } else if (sum < 0) {
+                            var timerID = setInterval(function() {
+                                i--;
+                                totalGain.text(percentagePrefix + i);
+                                if (i === sum) clearInterval(timerID);
+                            }, intervalTime);
+                        }
+                    }
+                    count(graph, sum);
+
+                    percentage.text(percentagePrefix + percentageGain + "%");
+                    totalGain.text("0%");
+                    setTimeout(function() {
+                        percentage.addClass('visible');
+                        hVal.addClass('visible');
+                    }, 1300);
+
+                }
+
+
+                function showValues() {
+                    var val1 = $(graph).find('.h-value');
+                    var val2 = $(graph).find('.percentage-value');
+                    val1.addClass('visible');
+                    val2.addClass('visible');
+                }
+
+                function drawPolygon(segments, id) {
+                    var lastel = segments[segments.length - 1];
+                    var polySeg = segments.slice();
+                    polySeg.push([78, 38.4], [1, 38.4]);
+                    var polyLine = polySeg.join(' ').toString();
+                    var replacedString = polyLine.replace(/L/g, '').replace(/M/g, "");
+
+                    var poly = graph.polygon(replacedString);
+                    var clip = graph.rect(-80, 0, 80, 40);
+                    poly.attr({
+                        'id': 'poly-' + id,
+                        /*'clipPath':'url(#clip)'*/
+                        'clipPath': clip
+                    });
+                    clip.animate({
+                        transform: 't80,0'
+                    }, 1300, mina.linear);
+                }
+
+                parseData(points);
+
+                createSegments(myPoints);
+                calculatePercentage(points, container);
+                joinLine(segments, id);
+
+                drawPolygon(segments, id);
+
+
+                /*$('#poly-'+id).attr('class','show');*/
+
+                /* function drawPolygon(segments,id){
+                  var polySeg = segments;
+                  polySeg.push([80,40],[0,40]);
+                  var polyLine = segments.join(' ').toString();
+                  var replacedString = polyLine.replace(/L/g,'').replace(/M/g,"");
+                  var poly = graph.polygon(replacedString);
+                  poly.attr('id','poly-'+id)
+                }
+                drawPolygon(segments,id);*/
+            }
+
+            
+
+            
+                //drawCircle('#chart-3',1,77,'#circle-1');
+                //drawCircle('#chart-4',2,53,'#circle-2');
+                drawLineGraph('#chart-1', chart_1_y, '#graph-1-container', 1);
+                drawLineGraph('#chart-2', chart_2_y, '#graph-2-container', 2);
+                drawLineGraph('#chart-3', chart_3_y, '#graph-3-container', 2);
+                drawLineGraph('#chart-4', chart_4_y, '#graph-4-container', 2);
+                drawLineGraph('#chart-5', chart_5_y, '#graph-5-container', 2);
+                drawLineGraph('#chart-6', chart_6_y, '#graph-6-container', 2);
+                drawLineGraph('#chart-7', chart_7_y, '#graph-7-container', 2);
+                drawLineGraph('#chart-8', chart_8_y, '#graph-8-container', 2);
+                drawLineGraph('#chart-9', chart_9_y, '#graph-9-container', 2);
+            
+            console.log(arrayA);
+            console.log(arrayB);
+            console.log(arrayC);
+            console.log(arrayD);
+            console.log(arrayE);
+            console.log(arrayF);
+            console.log(arrayG);
+            console.log(arrayH);
+            console.log(arrayI);
+            
+
+        </script>
+
+
+
+</body>
+
+</html>

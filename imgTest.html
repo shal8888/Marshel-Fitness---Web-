@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>RegistrationForm_v1 by Colorlib</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="css/stylereg.css">
+        
+        <link rel="stylesheet" href="css/stylenew.css" type="text/css" media="all">
+    <!-- //Custom-Stylesheet-Links -->
+    <!--fonts -->
+    <!-- //fonts -->
+    <!--<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="all">-->
+    <!-- //Font-Awesome-File-Links -->
+	
+	<!-- Google fonts -->
+	<link href="//fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Mukta:200,300,400,500,600,700,800" rel="stylesheet">
+    
+	</head>
+
+	<body>
+        <style> img{height: 200px; width: 200px; border:2px solid; color: white;}</style>
+         
+        <section class="main">
+        
+        <div class="layer">
+
+            <div class="bottom-grid">
+                <div class="logo">
+                    <h1> <a href="index.html"><span class=""><img src="images/logo.png" style="width: 200px ;height: auto" class="logo"></span></a></h1>
+                </div>
+                <div class="links">
+                    <ul class="links-unordered-list">
+                        <li class="">
+                            <a href="index.html" class="">Login</a>
+                        </li>
+                        <li class="">
+                            <a href="" class="">About Us</a>
+                        </li>
+                        <li class="active">
+                            <a href="register.html" class="active">Register</a>
+                        </li>
+                        <li class="">
+                            <a href="#" class="">Contacts</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+               
+        </div>
+
+		<div class="wrapper" style="background-image: url("images/ashan.jpg"); backgroung-attachment: fixed;">
+			<div class="inner">
+				<div class="image-holder">
+					<img id="image" >
+				</div>
+              
+				<form id="adddata" action="">
+					<h3 style="color: white">Registration Form</h3>
+					<div class="form-group">
+						<input type="text" id ="fName" name = "fName" placeholder="First Name" class="form-control">
+						<input type="text" name = "lName" placeholder="Last Name" class="form-control">
+					</div>
+					<div class="form-wrapper">
+						<input type="text" name="username" placeholder="Username" class="form-control">
+						<i class="zmdi zmdi-account"></i>
+					</div>
+					<div class="form-wrapper">
+						<input type="text" name ="email" placeholder="Email Address" class="form-control">
+						<i class="zmdi zmdi-email"></i>
+					</div>
+					<div class="form-wrapper">
+						<select name="" id="" class="form-control">
+							<option value="" disabled selected>Gender</option>
+							<option value="male">Male</option>
+							<option value="femal">Female</option>
+						</select>
+						<i class="zmdi zmdi-caret-down" style="font-size: 17px"></i>
+					</div>
+					<div class="form-wrapper">
+						<input type="password" name="pword" placeholder="Password" class="form-control">
+						<i class="zmdi zmdi-lock"></i>
+					</div>
+					<div class="form-wrapper">
+						<input type="password" placeholder="Confirm Password" class="form-control">
+						<i class="zmdi zmdi-lock"></i>
+					</div>
+					<button id="btn" onclick="storedata()" >Register
+						<i class="zmdi zmdi-arrow-right"></i>
+					</button>
+                    
+                    <button id="click" onclick="clickme()" >Upload
+						<i class="zmdi zmdi-arrow-right"></i>
+					</button>
+                    <button id="select"  >Select
+						<i class="zmdi zmdi-arrow-right"></i>
+					</button>
+				</form>
+			</div>
+		</div>
+        </section>
+           
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+
+        <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-storage.js"></script>
+
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyD7IK_liGLPyXwKvk0L7I6x2m35UTcPpaw",
+    authDomain: "marshalfitness-b1f95.firebaseapp.com",
+    databaseURL: "https://marshalfitness-b1f95.firebaseio.com",
+    projectId: "marshalfitness-b1f95",
+    storageBucket: "marshalfitness-b1f95.appspot.com",
+    messagingSenderId: "797521470411",
+    appId: "1:797521470411:web:2542a3969f714d9741cc4e",
+    measurementId: "G-XW0XTVTNV9"
+  };
+  // Initialize Firebase
+    var files=[];
+    var reader;
+   
+  firebase.initializeApp(firebaseConfig);
+  const db=firebase.firestore();
+    //*************Storing Data********************
+    function storedata(){
+         const form=document.querySelector('#adddata');
+       form.addEventListener('submit',(e) => {
+    e.preventDefault();
+   
+    db.collection('cadet').doc(form.username.value).set({
+        
+        name: form.fName.value,
+        email: form.email.value,
+        username: form.username.value,
+        password: form.pword.value
+        
+    });
+       })
+    
+
+    }
+    //********************selecting Image**********************
+
+    
+   document.getElementById("select").onclick=function (e){
+        //const form=document.querySelector('#adddata');
+       e.preventDefault();
+        var input = document.createElement('input');
+        input.type = 'file';
+       // input.click();
+       input.onchange = e => {
+           files = e.target.files;
+            reader = new FileReader();
+           reader.onload= function(){
+               document.getElementById("image").src = reader.result;
+           }
+           reader.readAsDataURL(files[0]);
+       }
+        input.click();
+    }
+  //  ***********Uploading Image***********************
+       
+        document.getElementById("click").onclick=function(e){
+       e.preventDefault();
+            const form=document.querySelector('#adddata');
+        var ImageName=document.getElementById("fName").value;
+            //;
+        var upload= firebase.storage().ref('Images/'+ImageName+'.jpg').put(files[0]);
+        upload.on('state_changed',function(snapshot){
+            //alert("Image added");
+        },
+                  function(error){
+            
+            alert('Error saving image');
+        }
+                  ,
+                  function(){
+          
+                upload.snapshot.ref.getDownloadURL().then(function(url){
+                    var imageURL = url;
+                      alert("Image not added");
+//                    firebase.database().ref('pictures'+ImageName).set({
+//                        Name : ImageName,
+//                        Link : imageURL
+//                        
+//                    }
+//                    );
+                   const form=document.querySelector('#adddata');
+//form.addEventListener('submit',(e) => {
+  //  e.preventDefault();
+   
+    db.collection('cadet').doc(form.username.value).set({
+        
+        name: form.fName.value,
+        email: form.email.value,
+        username: form.username.value,
+        password: form.pword.value,
+        link: imageURL
+        
+    });
+           alert('Image added so successfully');
+       //})
+                     alert('Image added successfully');
+                });
+               
+            }
+            
+        );
+                            
+                            
+                            
+    }
+    //db.settings({timestampsInSnapshots: true});
+</script>
+        
+	</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

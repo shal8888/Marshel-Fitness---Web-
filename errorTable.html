@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Table V01</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/table.css">
+    <!--===============================================================================================-->
+
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
+
+
+</head>
+
+<body>
+
+
+
+
+
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <h4 style="color: white; padding-bottom: 20px;">Results</h4>
+                <div class="table100">
+                    <table id="resultTab">
+                        <thead>
+                            <tr class="table100-head">
+                                <th class="column">Cadet ID</th>
+                                <th class="column">Month/Year</th>
+                                <th class="column">Arm Bending</th>
+                                <th class="column">Pushups</th>
+                                <th class="column">Rope Climbing</th>
+                                <th class="column">Sit n Reach</th>
+                                <th class="column">Shuttle Run</th>
+                                <th class="column">Situps</th>
+                                <th class="column">Standing Board Jump</th>
+                                <th class="column">2 Mile Run</th>
+                                <th class="column">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr></tr>
+
+                            <script>
+                                var d = sessionStorage.getItem("d");
+                                var t = sessionStorage.getItem("t");
+                                var int = sessionStorage.getItem("int");
+                                var date = new Date(d);
+                                var month = date.getMonth() + 1;
+                                var year = date.getFullYear();
+                                var t1 = sessionStorage.getItem("t1");
+                                var chosen = sessionStorage.getItem("chosen");
+                                var msg;
+
+                                console.log(date);
+                                console.log(month);
+                                console.log(year);
+                                console.log(t);
+                                console.log(int);
+                                console.log(t1);
+                                console.log(chosen.toString());
+
+
+                                firebase.initializeApp({
+                                    apiKey: "AIzaSyDwbvS5gMt-dAGIJJs_iuvxjfgSIsWsZW0",
+                                    authDomain: "mvf2-e0e2e.firebaseapp.com",
+                                    databaseURL: "https://mvf2-e0e2e.firebaseio.com",
+                                    projectId: "mvf2-e0e2e",
+                                    storageBucket: "mvf2-e0e2e.appspot.com",
+                                    messagingSenderId: "845407842102",
+                                    appId: "1:845407842102:web:c55bfab8f766b90c69cd97"
+                                });
+
+                                var db = firebase.firestore();
+                                var k = 1;
+
+                                var docTemp = db.collection("temp").doc(chosen);
+
+
+                                docTemp.get().then(function(doc) {
+                                    if (doc.exists) {
+                                        console.log("Document data:", doc.data());
+                                        month = doc.data().month;
+                                        year = doc.data().year;
+                                        msg = doc.data().msg;
+
+                                        console.log(msg);
+                                        document.getElementById("msg").value =msg;
+                                        
+                                    } else {
+                                        // doc.data() will be undefined in this case
+                                        console.log("No such document!");
+                                    }
+                                }).catch(function(error) {
+                                    console.log("Error getting document:", error);
+                                });
+
+                                var docRef = db.collection("temp").doc(chosen).collection("result");
+
+                                docRef.get().then(function(querySnapshot) {
+                                        querySnapshot.forEach(function(doc) {
+                                            console.log(doc.id, " => ", doc.data());
+
+                                            var c3 = doc.data().armBending;
+                                            var c4 = doc.data().push_ups;
+                                            var c5 = doc.data().rpClimbing;
+                                            var c6 = doc.data().aAndR;
+                                            var c7 = doc.data().shtlRun;
+                                            var c8 = doc.data().sit_ups;
+                                            var c9 = doc.data().stbJump;
+                                            var c10 = doc.data().twoMileRun;
+                                            var c11 = doc.data().total;
+
+                                            var table = document.getElementById("resultTab");
+
+                                            var row = table.insertRow(k);
+                                            var cell1 = row.insertCell(0);
+                                            var cell2 = row.insertCell(1);
+                                            var cell3 = row.insertCell(2);
+                                            var cell4 = row.insertCell(3);
+                                            var cell5 = row.insertCell(4);
+                                            var cell6 = row.insertCell(5);
+                                            var cell7 = row.insertCell(6);
+                                            var cell8 = row.insertCell(7);
+                                            var cell9 = row.insertCell(8);
+                                            var cell10 = row.insertCell(9);
+                                            var cell11 = row.insertCell(10);
+
+                                            cell1.innerHTML = doc.id;
+                                            cell2.innerHTML = month + "/" + year;
+                                            cell3.innerHTML = c3;
+                                            cell4.innerHTML = c4;
+                                            cell5.innerHTML = c5;
+                                            cell6.innerHTML = c6;
+                                            cell7.innerHTML = c7;
+                                            cell8.innerHTML = c8;
+                                            cell9.innerHTML = c9;
+                                            cell10.innerHTML = c10;
+                                            cell11.innerHTML = c11;
+
+                                            cell3.setAttribute('contentEditable', 'true');
+                                            cell4.setAttribute('contentEditable', 'true');
+                                            cell5.setAttribute('contentEditable', 'true');
+                                            cell6.setAttribute('contentEditable', 'true');
+                                            cell7.setAttribute('contentEditable', 'true');
+                                            cell8.setAttribute('contentEditable', 'true');
+                                            cell9.setAttribute('contentEditable', 'true');
+                                            cell10.setAttribute('contentEditable', 'true');
+                                            cell11.setAttribute('contentEditable', 'true');
+                                        });
+                                    })
+                                    .catch(function(error) {
+                                        console.log("Error getting documents: ", error);
+                                    });
+
+                            </script>
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="wrap-table100">
+                <h4 style="color: white; padding-bottom: 20px;">Report</h4>
+                <div class="table100">
+                    <textarea id="msg" class="msg" rows="5" cols="144" readonly style="font-family: OpenSans-Regular;
+    font-size: 18px;
+    color: #006c7d;
+    line-height: 1.2;
+    font-weight: unset;
+    border-radius: 10px;">
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="btns">
+                <button class="color-change"><a href="troophome.html">Go Back</a></button>
+                <button class="color-change"><a id="click">Upadate</a></button>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        document.getElementById("click").onclick = function() {
+            insertData()
+        };
+
+        function insertData() {
+
+            var d = sessionStorage.getItem("d");
+            var t = sessionStorage.getItem("t");
+            var t1 = sessionStorage.getItem("t1");
+            var int = sessionStorage.getItem("int");
+            var date = new Date(d);
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+
+            var n1 = document.getElementById("resultTab").rows.length - 1;
+
+
+            var str = "";
+
+            for (i = 1; i < n1; i++) {
+
+                var serviceNum = document.getElementById("resultTab").rows[i].cells.item(0).innerHTML;
+                var arm = document.getElementById("resultTab").rows[i].cells.item(2).innerHTML;
+                var push = document.getElementById("resultTab").rows[i].cells.item(3).innerHTML;
+                var rope = document.getElementById("resultTab").rows[i].cells.item(4).innerHTML;
+                var snr = document.getElementById("resultTab").rows[i].cells.item(5).innerHTML;
+                var shuttle = document.getElementById("resultTab").rows[i].cells.item(6).innerHTML;
+                var sit = document.getElementById("resultTab").rows[i].cells.item(7).innerHTML;
+                var stand = document.getElementById("resultTab").rows[i].cells.item(8).innerHTML;
+                var mile = document.getElementById("resultTab").rows[i].cells.item(9).innerHTML;
+                var tot = document.getElementById("resultTab").rows[i].cells.item(10).innerHTML;
+                
+                var tempint = sessionStorage.getItem("tempint");
+                var tempt1 = sessionStorage.getItem("tempt1");
+                var tempmonth = sessionStorage.getItem("tempmonth");
+
+
+                var docName = serviceNum + "_" + month + "_" + year;
+                var tempDoc = tempint + "-" + tempt1 + "-" + tempmonth;
+
+                /*db.collection('result').doc(docName.toString()).set({
+                    serviceNum: serviceNum.toString(),
+                    year: year.toString(),
+                    month: month.toString(),
+                    armBending: arm.toString(),
+                    push_ups: push.toString(),
+                    rpClimbing: rope.toString(),
+                    aAndR: snr.toString(),
+                    shtlRun: shuttle.toString(),
+                    sit_ups: sit.toString(),
+                    stbJump: stand.toString(),
+                    total: tot.toString(),
+                    twoMileRun: mile.toString()
+                });*/
+                
+                
+
+                db.collection('temp').doc(tempDoc.toString()).update({
+                    msg: ""
+                });
+
+                db.collection('temp').doc(tempDoc.toString()).collection('result').doc(serviceNum.toString()).set({
+                    serviceNum: serviceNum.toString(),
+                    armBending: arm.toString(),
+                    push_ups: push.toString(),
+                    rpClimbing: rope.toString(),
+                    aAndR: snr.toString(),
+                    shtlRun: shuttle.toString(),
+                    sit_ups: sit.toString(),
+                    stbJump: stand.toString(),
+                    total: tot.toString(),
+                    twoMileRun: mile.toString()
+                })
+
+            }
+
+            window.alert("data updated");
+
+        }
+
+    </script>
+
+
+
+
+
+
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
